@@ -15,7 +15,7 @@ char *leet(char *s)
 	char t2[] = "43107";
 	char t3[] = "aelot";
 
-	for(i = 0; s[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
 		for (j = 0; j < 5; j++)
 		{
@@ -27,6 +27,5 @@ char *leet(char *s)
 		}
 		printf("%c", s[i]);
 	}
-
 	return (s);
 }

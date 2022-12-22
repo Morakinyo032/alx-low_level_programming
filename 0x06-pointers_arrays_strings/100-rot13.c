@@ -9,16 +9,21 @@
  */
 char *rot13(char *s)
 {
-	int i;
+	int i, j;
+	char *r, *c;
 
+	c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	r = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (isalpha(s[i]) && s[i] > 'm')
-			s[i] = s[i] - 13;
-		else if (isalpha(s[i]) && s[i] <= 'm')
-			s[i] = s[i] + 13;
-		printf("%c", s[i]);
+		for (j = 0; c[j] != '\0'; j++)
+		{
+			if (s[i] == c[j])
+			{
+				s[i] = r[j];
+				break;
+			}
+		}
 	}
-
 	return (s);
 }
