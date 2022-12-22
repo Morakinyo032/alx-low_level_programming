@@ -15,21 +15,17 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int sum, i;
 
 	i = size_r - 1;
-	sum = 0;
-	len1 = strlen(n1) - 1;
-	len2 = strlen(n2) - 1;
-	if (len1 >= len2)
+	sum = atoi(n1) + atoi(n2);
+	if (sum < 0)
 	{
-
+		r[0] = '-';
+		sum *= -1;
 	}
-	for (i = size_r - 1; i >= 0; i)
+	while (sum)
 	{
-		rem = (n1[j] - '0') + (n2[j] - '0');
-		if (rem > 9)
-		{
-			sum *= 10;
-			sum += rem;
-		}
+		r[i] = sum % 10 + '0';
+		sum /= 10;
+		i--;
 	}
 	return (r);
 }
