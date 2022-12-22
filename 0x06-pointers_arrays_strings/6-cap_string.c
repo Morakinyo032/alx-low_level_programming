@@ -66,6 +66,8 @@ char *cap_string(char *s)
 {
 	int i;
 
+	if (!s)
+		return (NULL);
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (is_separator(s[i]) == 1)
