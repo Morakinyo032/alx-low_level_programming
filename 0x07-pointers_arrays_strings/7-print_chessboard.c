@@ -2,7 +2,7 @@
 /**
  * print_chessboard - prints a chessboard
  * @s: input string
- * 
+ * Return: Nothing
  */
 void print_chessboard(char (*s)[8])
 {

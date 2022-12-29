@@ -1,7 +1,7 @@
 #include "main.h"
 #include <string.h>
 /**
- * _memset - Fills the first n bytes of the memory area pointed to by s with a constant byte b
+ * _memset - Fills the first n bytes of a memory area with const byte
  * @s: Variable containing the memory address
  * @b: Variable containing the value to be filled in s
  * @n: size of bytes to be filled in
@@ -9,5 +9,11 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-	return (memset(s, b, n));
+	int i;
+
+	for (i = 0; i < (int) n; i++)
+	{
+		s[i] = b;
+	}
+	return (s);
 }

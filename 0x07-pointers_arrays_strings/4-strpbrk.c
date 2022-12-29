@@ -1,12 +1,38 @@
 #include "main.h"
 #include <string.h>
+
 /**
- * _strpbrk - Locates the first occurrence in the string s of any of the bytes in the string accept
+ * charcmp - Compares two chars
+ * @c1: First char
+ * @c2: Second char
+ * Return: 1 if they are similar, -1 otherwise
+ */
+int charcmp(char c1, char c2)
+{
+	if (c1 == c2)
+		return (1);
+	return (-1);
+}
+
+/**
+ * _strpbrk - Locates where the 1st byte of a str in another str
  * @s: Input string
  * @accept: Input string
- * returns a pointer to the byte in s that matches one of the bytes in accept, or NULL if no such byte is found
+ * Return: a pointer to the byte if found or NULL otherwise
  */
 char *_strpbrk(char *s, char *accept)
 {
-	return (strpbrk(s, accept));
+	int i, j;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		for (j = 0; accept[j] != '\0'; j++)
+		{
+			if (accept[j] == s[i])
+			{
+				return (&s[i]);
+			}
+		}
+	}
+	return (NULL);
 }
