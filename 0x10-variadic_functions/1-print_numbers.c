@@ -6,20 +6,18 @@
  *
  * Return: Nothing
  */
-void print_numbers(const char *separator, const unsugned int n, ...)
+void print_numbers(const char *separator, const unsigned int n, ...)
 {
 	va_list args;
-
-	va_start(args, n);
 	int i;
 
-	for (i = 0; i < n; i++)
+	va_start(args, n);
+	for (i = 0; i < (int)n; i++)
 	{
 		printf("%i", va_arg(args, int));
-		if (i != n - 1 && separator != NULL)
+		if (i != (int)n - 1 && separator != NULL)
 			printf("%s", separator);
 	}
 	va_end(args);
-
 	printf("\n");
 }

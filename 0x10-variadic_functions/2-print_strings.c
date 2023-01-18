@@ -6,22 +6,23 @@
  *
  * Return: Nothing
  */
-void print_strings(const char *separator, const unsugned int n, ...)
+void print_strings(const char *separator, const unsigned int n, ...)
 {
+	char *s;
 	va_list args;
-
-	va_start(args, n);
 	int i;
 
-	for (i = 0; i < n; i++)
+	va_start(args, n);
+	for (i = 0; i < (int) n; i++)
 	{
-		if (va_arg(args, char *) == NULL)
+		s = va_arg(args, char *);
+		if (s == NULL)
 			printf("(nil)");
-		printf("%s", va_arg(args, char *));
-		if (i != n - 1 && separator != NULL)
+		else
+			printf("%s", s);
+		if (i != (int)n - 1 && separator != NULL)
 			printf("%s", separator);
 	}
 	va_end(args);
-
 	printf("\n");
 }
