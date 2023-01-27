@@ -9,6 +9,11 @@ size_t print_list(const list_t *h)
 	int num;
 	list_t *ptr;
 
+	if (h == NULL)
+	{
+		printf("[0] (nil)\n");
+		return (0);
+	}
 	num = 0;
 	ptr = (list_t *)h;
 	while (ptr != NULL)
