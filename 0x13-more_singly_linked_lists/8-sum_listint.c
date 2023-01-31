@@ -8,7 +8,7 @@
 int sum_listint(listint_t *head)
 {
 	listint_t *ptr1;
-	int num;
+	long int num;
 
 	num = 0;
 	ptr1 = head;
@@ -17,8 +17,8 @@ int sum_listint(listint_t *head)
 	{
 		ptr1 = ptr1->next;
 		if (ptr1 == NULL)
-			return (num);
+			return ((int)num);
 		num += ptr1->n;
 	}
-	return (num);
+	return ((int)num);
 }
