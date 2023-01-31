@@ -28,7 +28,7 @@ size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *ptr;
 	size_t num;
-	int i, j, flag;
+	int i, flag;
 	listint_t *ptr1[32];
 
 	num = 0;

@@ -6,7 +6,7 @@
  */
 listint_t *find_end_node(listint_t *h, listint_t *ptr)
 {
-	ptr = head;
+	ptr = h;
 	if (ptr->next == NULL)
 		return (ptr);
 	if (ptr != NULL)
@@ -28,19 +28,22 @@ listint_t *reverse_listint(listint_t **head)
 	ptr3 = ptr1;
 	while (ptr != NULL)
 	{
-		if (ptr->next == ptr1)
+		if (ptr->next != ptr1)
+			ptr = ptr->next;
+		else
 		{
+			printf("End node = %i\n", ptr1->n);
 			ptr1->next = ptr;
 			ptr1 = ptr;
 			ptr = *head;
 			if (ptr1 == *head)
 			{
+				printf("New End node = %i\n", ptr1->n);
 				(*head)->next == NULL;
 				*head = ptr3;
 				return(*head);
 			}
 		}
-		ptr = ptr->next;
 	}
 }
 int main(void)
