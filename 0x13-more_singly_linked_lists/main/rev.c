@@ -1,5 +1,23 @@
 #include "lists.h"
+/**
+ * listint_len - Prints all elements of a list_t
+ * @h:Pointer to the linked list
+ * Return: Number of elements in the list
+ */
+size_t listint_len(const listint_t *h)
+{
+	int num;
+	listint_t *ptr;
 
+	num = 0;
+	ptr = (listint_t *)h;
+	while (ptr != NULL)
+	{
+		num++;
+		ptr = ptr->next;
+	}
+	return (num);
+}
 /**
  *
  *
@@ -7,25 +25,24 @@
  *
  *
  */
-
-listint_t *reverse_list(listint_t *ptr1, listint_t *ptr2, listint_t *ptr3)
-{
-	if (ptr3 == NULL)
-		return (ptr2);
-	if (ptr2)
-	{
-		ptr2->next = ptr1;
-		ptr1->next = NULL;
-		reverse_list(ptr2, ptr2->next, (ptr2->next)->next);
-	}
-}
 listint_t *reverse_listint(listint_t **head)
-{
-	listint_t *ptr, *ptr1;
-
-	ptr = *head;
-	ptr1 = ptr->next;
-	reverse_list(ptr, ptr1, ptr1->next);
+{	
+	listint_t *ptr[listint_len(*head)];
+	int i;
+	
+	i = 0;
+	ptr[i] = *head;
+	while (*head != NULL)
+	{
+		i++;
+		ptr[i] = (*head)->next;
+		ptr[i + 1] = (ptr[i])->next;
+		((*head)->next)->next = *head;
+		(ptr[0])->next = NULL;
+		*head = ptr[i + 1];
+		i++;
+	}
+	return (*head);
 }
 int main(void)
 {

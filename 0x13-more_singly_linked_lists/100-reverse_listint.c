@@ -1,21 +1,22 @@
 #include "lists.h"
 /**
- * add_nodeint - Adds a new node at the beginning of a listint_t list
- * @head: Pointer to head pointer
- * @n: int data input
- * Return: Address of the new element, or NULL if failed
+ * set_pointer - Initiates array of pointers
+ * @head: Pointer to head pointer of a listint list
+ * @ptr: Array of pointers
+ * @i: index counter
+ * Return: Nothing
  */
-listint_t *add_nodeint(listint_t **head, const int n)
+void set_pointer(listint_t **head, listint_t *ptr[], int i)
 {
-	listint_t *new;
-
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = n;
-	new->next = *head;
-	*head = new;
-	return (*head);
+	if (*head == NULL)
+	{
+		ptr[i] = NULL;
+		*head = ptr[0];
+		return;
+	}
+	ptr[i] = *head;
+	if (*head != NULL)
+		set_pointer(&((*head)->next), ptr, i + 1);
 }
 /**
  * reverse_listint - Reverses a listint list
@@ -23,17 +24,18 @@ listint_t *add_nodeint(listint_t **head, const int n)
  * Return: Pointer to the first node of the reversed list
  */
 listint_t *reverse_listint(listint_t **head)
-{
-	listint_t *ptr, *ptr1;
+{	
+	listint_t *ptr[100];
+	int i;
 
-	ptr = *head;
-	ptr1 = NULL;
-	while (ptr != NULL)
+	i = 0;
+	set_pointer(head, ptr, i);
+	for (i = 1; ptr[i] != NULL; i++)
 	{
-		add_nodeint(&ptr1, ptr->n);
-		ptr = ptr->next;
+		(ptr[i])->next = ptr[i - 1];
+
 	}
-	free_listint2(head);
-	*head = ptr1;
-	return (ptr1);
+	*head = ptr[i - 1];
+	(ptr[0])->next = NULL;
+	return (*head);
 }
