@@ -7,19 +7,25 @@
  *
  *
  */
+
+listint_t *reverse_list(listint_t *ptr1, listint_t *ptr2, listint_t *ptr3)
+{
+	if (ptr3 == NULL)
+		return (ptr2);
+	if (ptr2)
+	{
+		ptr2->next = ptr1;
+		ptr1->next = NULL;
+		reverse_list(ptr2, ptr2->next, (ptr2->next)->next);
+	}
+}
 listint_t *reverse_listint(listint_t **head)
 {
 	listint_t *ptr, *ptr1;
 
 	ptr = *head;
-	if (ptr->next == NULL)
-		return (ptr);
-	if (ptr != NULL)
-	{
-		reverse_listint(&(ptr->next));
-		(ptr->next)->next = ptr
-	}
-	
+	ptr1 = ptr->next;
+	reverse_list(ptr, ptr1, ptr1->next);
 }
 int main(void)
 {

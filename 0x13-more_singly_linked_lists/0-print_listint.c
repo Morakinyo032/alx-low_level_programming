@@ -9,6 +9,8 @@ size_t print_listint(const listint_t *h)
 	int num;
 	listint_t *ptr;
 
+	if (h == NULL)
+		return (0);
 	num = 0;
 	ptr = (listint_t *)h;
 	while (ptr != NULL)
