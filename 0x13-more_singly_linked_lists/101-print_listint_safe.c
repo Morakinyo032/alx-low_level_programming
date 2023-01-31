@@ -49,6 +49,8 @@ size_t print_listint_safe(const listint_t *head)
 	int i, flag;
 	listint_t *ptr1[200];
 
+	if (head == NULL)
+		return (0);
 	num = 0;
 	i = 0;
 	flag = -1;
