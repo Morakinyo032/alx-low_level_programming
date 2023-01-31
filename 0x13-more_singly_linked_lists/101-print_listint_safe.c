@@ -1,5 +1,23 @@
 #include "lists.h"
+/**
+ * listint_len - Prints all elements of a list_t
+ * @h:Pointer to the linked list
+ * Return: Number of elements in the list
+ */
+size_t listint_len(const listint_t *h)
+{
+	int num;
+	listint_t *ptr;
 
+	num = 0;
+	ptr = (listint_t *)h;
+	while (ptr != NULL)
+	{
+		num++;
+		ptr = ptr->next;
+	}
+	return (num);
+}
 /**
  * loop_flag - Checks for loop in a listint list
  * @ptr: Pointer to listint pointers
@@ -29,7 +47,7 @@ size_t print_listint_safe(const listint_t *head)
 	const listint_t *ptr;
 	size_t num;
 	int i, flag;
-	listint_t *ptr1[32];
+	listint_t *ptr1[200];
 
 	num = 0;
 	i = 0;
