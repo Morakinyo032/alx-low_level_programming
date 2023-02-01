@@ -3,13 +3,15 @@
  * freennode - Frees a given node of nodes of a listint list
  * @h: POinter to the head pointer
  * @n: Number of nodes to be freed
- * Return: Nothing
+ * Return: 0 on success or 98 otherwise
  */
-void freennode(listint_t **h, int n)
+int freennode(listint_t **h, int n)
 {
 	listint_t *ptr, *ptr1;
 	int i;
 
+	if (*h == NULL || n <= 0)
+		exit(98);
 	i = 0;
 	ptr = *h;
 	while (i < n)
@@ -19,6 +21,7 @@ void freennode(listint_t **h, int n)
 		ptr = ptr1;
 		i++;
 	}
+	return (0);
 }
 
 /**
@@ -28,7 +31,7 @@ void freennode(listint_t **h, int n)
  */
 int is_loop(listint_t **h)
 {
-	listint_t *ptr2[15], *ptr;
+	listint_t *ptr2[200], *ptr;
 	int i, j;
 
 	i = 0;
@@ -55,10 +58,11 @@ int is_loop(listint_t **h)
 size_t free_listint_safe(listint_t **h)
 {
 	listint_t *ptr, *ptr1;
-	listint_t *ptr2[15];
+	listint_t *ptr2[200];
 	size_t num;
-	int i, j;
+	int i, j, flag;
 
+	flag = 1;
 	num = 0;
 	i = 0;
 	if (is_loop(h) == -1)
@@ -80,14 +84,19 @@ size_t free_listint_safe(listint_t **h)
 		ptr2[i] = ptr;
 		for (j = 0; j < i; j++)
 		{
-			if (ptr2[j] == ptr2[i])
+			if (ptr2[j] == ptr)
 			{
 				freennode(h, i);
 				*h = NULL;
-				return ((size_t) i - 1);
+				flag = 0;
+				break;
 			}
 		}
+		if (flag == 0)
+			break;
 		i++;
+		num++;
 		ptr = ptr->next;
 	}
+	return (num - 1);
 }
