@@ -1,3 +1,4 @@
 #!/bin/bash
-gcc -fPIC -shared -o libjack.so jack.c
-LD_PRELOAD=$PWD/libjack.so ./gm
+gcc -c -fPIC puts.c
+gcc -shared -o lib_test.so puts.o
+export LD_PRELOAD=$PWD/libtest.so
