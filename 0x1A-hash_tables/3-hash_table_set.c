@@ -5,7 +5,7 @@
  * @key: Pointer to the key
  * @value: Pointer to the value
  *
- * Return 1 if succeeded, 0 otherwise
+ * Return: 1 if succeeded, 0 otherwise
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
